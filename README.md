@@ -1,24 +1,50 @@
-# README
+# 🎬 みたいアニメアプリ（WatchList）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 🔰 概要
 
-Things you may want to cover:
+「あとで見たいアニメ」を登録・管理できるシンプルなWebアプリです。  
+視聴予定・視聴中・視聴済みなどのステータス管理も可能。  
+ユーザーごとにマイアニメリストを作成し、編集・削除もできます。
 
-* Ruby version
+---
 
-* System dependencies
+## 🛠 使用技術
 
-* Configuration
+- Ruby 3.x
+- Rails 7.x（APIモードではなく通常モード）
+- SQLite3（またはMySQL）
+- HTML / CSS（Bootstrap予定）
+- ERBテンプレート
+- バージョン管理：Git / GitHub
 
-* Database creation
+---
 
-* Database initialization
+## 🧱 機能一覧
 
-* How to run the test suite
+| 機能                 | 説明 |
+|----------------------|------|
+| ユーザー登録         | 名前、メールアドレス、パスワードで登録 |
+| ログイン / ログアウト | セッションを利用した認証管理 |
+| アニメ一覧表示       | 自分が登録したアニメを一覧で表示 |
+| アニメの詳細表示     | アニメの個別情報を表示 |
+| アニメの新規登録     | タイトルやジャンル、ステータスを入力して追加 |
+| アニメの編集 / 削除  | 登録済みアニメの情報を変更／削除 |
+| ステータス変更       | 「視聴予定」「視聴中」「視聴済み」などを選択 |
+| ユーザー情報の編集   | 名前やメールアドレスの変更 |
+| ログイン制限         | ログインしていないとアニメ操作はできない |
 
-* Services (job queues, cache servers, search engines, etc.)
+---
 
-* Deployment instructions
+## 🧩 モデル構成
 
-* ...
+### User モデル
+
+| カラム名 | 型 | 説明 |
+|----------|----|------|
+| name | string | ユーザーの名前 |
+| email | string | メールアドレス（ユニーク） |
+| password_digest | string | パスワード（`has_secure_password`使用） |
+
+アソシエーション：
+```ruby
+has_many :animes, dependent: :destroy
