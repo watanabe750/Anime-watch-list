@@ -31,6 +31,13 @@
   </head>
 
   <body>
+
+
+    
+
+    <%= render "layouts/navbar" %>
+
+
     <div class="container mt-3">
       <% flash.each do |type, msg| %>
         <div class="alert alert-<%= type == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
