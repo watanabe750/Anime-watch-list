@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   post   'login',  to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  resources :animes, only: [:new, :create]
-
+  resources :animes, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  
   get "up" => "rails/health#show", as: :rails_health_check
 
 end
