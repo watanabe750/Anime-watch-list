@@ -1,0 +1,12 @@
+<!-- app/views/home/index.html.erb -->
+<h1>ようこそ、Anime Watch Listへ！</h1>
+
+<% if logged_in? %>
+  <p><%= current_user.name %> さん、こんにちは！</p>
+<% else %>
+  <%= link_to "ログイン", login_path %> |
+  <%= link_to "新規登録", signup_path %>
+<% end %>
+
+<%= link_to "アニメを登録する", new_anime_path %>
+
